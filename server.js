@@ -58,10 +58,11 @@ console.log(_.isString("hi"));*/
 const express = require('express')
 const app = express()               // app name have all functionalities of express
 const db = require('./db');
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
+const PORT = process.env.PORT || 3000;
 
 
 
@@ -102,8 +103,9 @@ const menuItemRoutes = require('./routes/menuItemRoutes');
 // Use the routers
 app.use('/person', personRoutes);
 app.use('/menu', menuItemRoutes);
-  
 
-app.listen(3000,()=>{
-    console.log('listening on port 3000')
-})       //port
+
+
+app.listen(PORT, ()=>{
+    console.log('listening on port 3000');
+})    //port
